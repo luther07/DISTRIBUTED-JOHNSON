@@ -1,7 +1,7 @@
 -module(hashmod).
--export([hash/1]).
+-export([hashin/1]).
 
-hash(MyInt) -> 
+hashin(MyInt) -> 
 	TabId = ets:new(myTable, []),
 	case MyInt>0 of
 		true ->
