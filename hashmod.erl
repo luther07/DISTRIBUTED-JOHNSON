@@ -1,15 +1,19 @@
 -module(hashmod).
--export([hashin/1]).
+-export([hashin/2]).
 
-hashin(MyInt) -> 
-	TabId = ets:new(myTable, []),
-	case MyInt>0 of
+hashin(TabId, N) -> 
+	case N>0 of
 		true ->
-			MyRandom = randomstring:get(5,"abcdefg"),
+			MyRandom = randomstring:get(5,"abcdefghijklmnopqrstuvwxyz"),
 			ets:insert(TabId,{MyRandom,MyRandom}),
-			MyInt + hash(MyInt-1);
-		false -> MyInt
+			N + hashin(TabId, N-1);
+		false -> N
 	end.
+
+hashout(TabId, N, D) ->
+	Percent = N * D / 100,
+	
+	 
 	
 
 
