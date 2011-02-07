@@ -10,9 +10,9 @@ hashout(TabId, PercentNum) ->
 				[] ->
 					hashout(TabId, PercentNum);
 				_ ->
-					ets:delete(TabId, RandomMatch);
-					hashout(TabId, PercentNum-1);
-			end
+					ets:delete(TabId, RandomMatch),
+					hashout(TabId, PercentNum-1)
+			end;
 		false ->
 			PercentNum
 	end.
