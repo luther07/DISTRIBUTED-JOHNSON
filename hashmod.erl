@@ -23,11 +23,11 @@ hashin(TabId, N, K) ->
 			MyRandom = randomstring:get(K,"abcdefghijklmnopqrstuvwxyz"),
 			RandomMatch = ets:lookup(TabId, MyRandom),
 			case RandomMatch of
-				[] ->
-					hashin(TabId, N, K);
-				_ ->
-					ets:insert(TabId,{MyRandom,MyRandom}),
-					hashin(TabId, N-1, K)
+				[]	->
+					ets:insert(TabId, {MyRandom,MyRandom}),
+					hashin(TabId, N-1, K);
+				_	->
+					hashin(TabId, N, K)
 			end;
 		false -> N
 	end.
