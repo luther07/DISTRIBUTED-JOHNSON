@@ -1,28 +1,28 @@
 -module(hashmod).
--export([hashin/2, hashout/2]).
+-export([hashin/3, hashout/3]).
 
-hashout(TabId, PercentNum) ->
-	MyRandom = randomstring:get(5, "abcdefghijklmnopqrstuvwxyz"),
+hashout(TabId, PercentNum, K) ->
+	MyRandom = randomstring:get(K, "abcdefghijklmnopqrstuvwxyz"),
 	RandomMatch = ets:lookup(TabId, MyRandom),
 	case PercentNum>0 of
 		true -> 
 			case RandomMatch of
 				[] ->
-					hashout(TabId, PercentNum);
+					hashout(TabId, PercentNum, K);
 				_ ->
 					ets:delete(TabId, RandomMatch),
-					hashout(TabId, PercentNum-1)
+					hashout(TabId, PercentNum-1, K)
 			end;
 		false ->
 			PercentNum
 	end.
 
-hashin(TabId, N) -> 
+hashin(TabId, N, K) -> 
 	case N>0 of
 		true ->
-			MyRandom = randomstring:get(5,"abcdefghijklmnopqrstuvwxyz"),
+			MyRandom = randomstring:get(K,"abcdefghijklmnopqrstuvwxyz"),
 			ets:insert(TabId,{MyRandom,MyRandom}),
-			N + hashin(TabId, N-1);
+			N + hashin(TabId, N-1, K);
 		false -> N
 	end.
 
