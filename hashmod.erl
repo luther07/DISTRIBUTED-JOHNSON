@@ -33,10 +33,10 @@ hashin(TabId, N, K) ->
 	end.
 
 rehash(TabId, PercentNum, K) ->
-	MyRandom = randomstring:get(K, "abcdefghijklmnopqrstuvwxzy"),
-	RandomMatch = ets:lookup(TabId, MyRandom),
 	case PercentNum>0 of
 		true ->
+			MyRandom = randomstring:get(K, "abcdefghijklmnopqrstuvwxzy"),
+			RandomMatch = ets:lookup(TabId, MyRandom),
 			case RandomMatch of
 				[] ->
 					rehash(TabId, PercentNum, K);
