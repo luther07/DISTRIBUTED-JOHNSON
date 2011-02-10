@@ -6,7 +6,7 @@
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
--export([program/3, get_args/0]).
+-export([program/3, get_args/0, prep_file/0]).
 
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
@@ -16,13 +16,21 @@ get_args() ->
 	Args1 = string:to_integer(Arg1),
 	Args2 = string:to_integer(Arg2),
 	Args3 = string:to_integer(Arg3),
-	N = element(1, Args1),
+	N = math:pow(26, element(1, Args1)),
 	D = element(1, Args2),
 	K = element(1, Args3),
 	program(N, D, K).
 
+prep_file() ->
+	{ok, G}=file:open("Results.txt", [append]),
+			file:write(G,"Number,"),
+			file:write(G,"N,"),
+			file:write(G,"D,"),
+			file:write(G,"K\n,"),
+			file:close(G),
+			init:stop().
+
 program(N, D, K) ->
-	
 	TabId = ets:new(myTable, [set]),
 	PercentNum = N*D/100,
 	InputTime = timer:tc(hashmod,hashin,[TabId, N, K]),
@@ -30,12 +38,14 @@ program(N, D, K) ->
 	ReInputTime = timer:tc(hashmod,rehash,[TabId, PercentNum, K]),
 	NewLine = "\n",
 	Comma = ",",
+	Number = integer_to_list(N),
 	case InputTime of
 		{Time1,_} ->
 			Output1 = integer_to_list(Time1),
 			io:fwrite(Output1),
 			io:fwrite("\n"),
-			{ok, F}=file:open("a.txt", [read,write]),
+			{ok, F}=file:open("Results.txt", [append]),
+			file:write(F, Number),
 			file:write(F,Output1),
 			file:write(F,Comma)
 	end,
@@ -53,6 +63,7 @@ program(N, D, K) ->
 			io:fwrite(Output3),
 			io:fwrite("\n"),
 			file:write(F,Output3),
-			file:write(F,NewLine)
+			file:write(F,NewLine),
+			file:close(F)
 	end,
 	init:stop().
