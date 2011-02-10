@@ -6,7 +6,15 @@
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
--export([program/3, get_args/0, prep_file/0]).
+-export([program/3, get_args/0, prep_file/0, powers/2]).
+
+powers(Base, Expo) ->
+	case Expo>0 of
+		true ->
+			Base * powers(Base, Expo-1);
+		false ->
+			Base
+	end.
 
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
@@ -16,12 +24,14 @@ get_args() ->
 	Arg1 = string:to_integer(Temp1),
 	Arg2 = string:to_integer(Temp2),
 	Arg3 = string:to_integer(Temp3),
-	%N = math:pow(26, (element(1, Arg1))),
+	NTemp = element(1, Arg1),
+	N = powers(26, NTemp),
 	%N = 26,
-	N = element(1, Arg1),
+	%N = element(1, Arg1),
 	D = element(1, Arg2),
 	K = element(1, Arg3),
-	program(N, D, K).
+	program(N, D, K)
+	io:fwrite("I got my args!\n").
 
 prep_file() ->
 	{ok, G}=file:open("Results.txt", [append]),
