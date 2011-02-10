@@ -19,8 +19,11 @@ powers(Base, Expo) ->
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
 	Temp1 = hd(MyArgs),
+	io:fwrite("Got temp1"),
 	Temp2 = hd(tl(MyArgs)),
+	io:fwrite("Got temp2"),
 	Temp3 = hd(tl(tl(MyArgs))),
+	io:fwrite("Got temp3"),
 	Arg1 = string:to_integer(Temp1),
 	Arg2 = string:to_integer(Temp2),
 	Arg3 = string:to_integer(Temp3),
@@ -30,7 +33,7 @@ get_args() ->
 	%N = element(1, Arg1),
 	D = element(1, Arg2),
 	K = element(1, Arg3),
-	program(N, D, K)
+	program(N, D, K),
 	io:fwrite("I got my args!\n").
 
 prep_file() ->
