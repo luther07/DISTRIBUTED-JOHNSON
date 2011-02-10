@@ -9,7 +9,7 @@
 -export([program/3, get_args/0, prep_file/0, powers/2]).
 
 %I had to create this functions because the BIF returns float and I need int.
-%I have tested this function and it works.
+%This function has been tested and it works.
 powers(Base, Expo) ->
 	case Expo>0 of
 		true ->
@@ -17,7 +17,8 @@ powers(Base, Expo) ->
 		false ->
 			Base
 	end.
-
+%This function gets the plain arguments passed to the erlang init process from the shell script.
+%This function has been presenting problems. Not sure what's wrong yet. I'll fix it in no time!
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
 	Temp1 = hd(MyArgs),
@@ -33,6 +34,7 @@ get_args() ->
 	program(N, D, K).
 
 %This function writes the first line, field names to the file.
+%This function has been tested and it works.
 prep_file() ->
 	{ok, G}=file:open("Results.txt", [append]),
 			file:write(G,"Number,"),
