@@ -10,13 +10,13 @@
 
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
-	Arg1 = hd(MyArgs),
-	Arg2 = hd(tl(MyArgs)),
-	Arg3 = hd(tl(tl(MyArgs))),
-	Args1 = string:to_integer(Arg1),
-	Args2 = string:to_integer(Arg2),
-	Args3 = string:to_integer(Arg3),
-	N = math:pow(26, element(1, Args1)),
+	Temp1 = hd(MyArgs),
+	Temp2 = hd(tl(MyArgs)),
+	Temp3 = hd(tl(tl(MyArgs))),
+	Arg1 = string:to_integer(Temp1),
+	Arg2 = string:to_integer(Temp2),
+	Arg3 = string:to_integer(Temp3),
+	N = math:pow(26, (element(1, Args1))),
 	D = element(1, Args2),
 	K = element(1, Args3),
 	program(N, D, K).
