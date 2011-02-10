@@ -16,9 +16,11 @@ get_args() ->
 	Arg1 = string:to_integer(Temp1),
 	Arg2 = string:to_integer(Temp2),
 	Arg3 = string:to_integer(Temp3),
-	N = math:pow(26, (element(1, Args1))),
-	D = element(1, Args2),
-	K = element(1, Args3),
+	%N = math:pow(26, (element(1, Arg1))),
+	%N = 26,
+	N = element(1, Arg1),
+	D = element(1, Arg2),
+	K = element(1, Arg3),
 	program(N, D, K).
 
 prep_file() ->

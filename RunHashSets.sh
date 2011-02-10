@@ -5,8 +5,9 @@ erlc mainprogram.erl
 erl -noshell -run mainprogram prep_file
 for i in {1..4}
 do
-	for j in {50}
+	combinations=26**$i
+	for j in {25 50 75}
 	do
-		erl -noshell -run mainprogram get_args -extra $i $j $i
+		erl -noshell -run mainprogram get_args -extra $combinations $j $i
 	done
 done
