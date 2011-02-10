@@ -8,6 +8,8 @@
 -module(mainprogram).
 -export([program/3, get_args/0, prep_file/0, powers/2]).
 
+%I had to create this functions because the BIF returns float and I need int.
+%I have tested this function and it works.
 powers(Base, Expo) ->
 	case Expo>0 of
 		true ->
@@ -19,23 +21,18 @@ powers(Base, Expo) ->
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
 	Temp1 = hd(MyArgs),
-	io:fwrite("Got temp1"),
 	Temp2 = hd(tl(MyArgs)),
-	io:fwrite("Got temp2"),
 	Temp3 = hd(tl(tl(MyArgs))),
-	io:fwrite("Got temp3"),
 	Arg1 = string:to_integer(Temp1),
 	Arg2 = string:to_integer(Temp2),
 	Arg3 = string:to_integer(Temp3),
 	NTemp = element(1, Arg1),
 	N = powers(26, NTemp),
-	%N = 26,
-	%N = element(1, Arg1),
 	D = element(1, Arg2),
 	K = element(1, Arg3),
-	program(N, D, K),
-	io:fwrite("I got my args!\n").
+	program(N, D, K).
 
+%This function writes the first line, field names to the file.
 prep_file() ->
 	{ok, G}=file:open("Results.txt", [append]),
 			file:write(G,"Number,"),
