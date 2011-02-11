@@ -21,16 +21,28 @@ powers(Base, Expo) ->
 %This function has been presenting problems. Not sure what's wrong yet. I'll fix it in no time!
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
+	io:fwrite("Grabbed my plain args"),
 	Temp1 = hd(MyArgs),
+	io:fwrite("Assigned list head to Temp1"),
 	Temp2 = hd(tl(MyArgs)),
+	io:fwrite("Assigned sublist head to Temp2"),
 	Temp3 = hd(tl(tl(MyArgs))),
+	io:fwrite("Assigned subsublist head to Temp3"),
 	Arg1 = string:to_integer(Temp1),
+	io:fwrite("Assigned integer tuple to Arg1"),
 	Arg2 = string:to_integer(Temp2),
+	io:fwrite("Assigned integer tuple to Arg2"),
 	Arg3 = string:to_integer(Temp3),
+	io:fwrite("Assigned integer tuple to Arg3"),
 	NTemp = element(1, Arg1),
+	io:fwrite("Assigned first element of Arg1 tuple to Ntemp"),
 	N = powers(26, NTemp),
+	io:fwrite("Assigned the return value of function powers to N"),
 	D = element(1, Arg2),
+	io:fwrite("Assigned first element of Arg2 tuple to D"),
 	K = element(1, Arg3),
+	io:fwrite("Assigned first element of Arg3 tuble to K"),
+	io:fwrite(", followed by passing arguments N, D, and K to function program"),
 	program(N, D, K).
 
 %This function writes the first line, field names to the file.
