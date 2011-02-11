@@ -2,7 +2,8 @@
 erlc randomstring.erl
 erlc hashmod.erl
 erlc mainprogram.erl
-erl -noshell -run mainprogram prep_file
+erlc prep.erl
+erl -noshell -run prep prep_file -run init stop
 echo "file is prepped"
 for i in {1..4}
 do

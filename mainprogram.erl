@@ -19,30 +19,31 @@ powers(Base, Expo) ->
 	end.
 %This function gets the plain arguments passed to the erlang init process from the shell script.
 %This function has been presenting problems. Not sure what's wrong yet. I'll fix it in no time!
+%After adding debugging outputs I find that this function is probably working correctly.
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
-	io:fwrite("Grabbed my plain args"),
+	io:fwrite("Grabbed my plain args\n"),
 	Temp1 = hd(MyArgs),
-	io:fwrite("Assigned list head to Temp1"),
+	io:fwrite("Assigned list head to Temp1\n"),
 	Temp2 = hd(tl(MyArgs)),
-	io:fwrite("Assigned sublist head to Temp2"),
+	io:fwrite("Assigned sublist head to Temp2\n"),
 	Temp3 = hd(tl(tl(MyArgs))),
-	io:fwrite("Assigned subsublist head to Temp3"),
+	io:fwrite("Assigned subsublist head to Temp3\n"),
 	Arg1 = string:to_integer(Temp1),
-	io:fwrite("Assigned integer tuple to Arg1"),
+	io:fwrite("Assigned integer tuple to Arg1\n"),
 	Arg2 = string:to_integer(Temp2),
-	io:fwrite("Assigned integer tuple to Arg2"),
+	io:fwrite("Assigned integer tuple to Arg2\n"),
 	Arg3 = string:to_integer(Temp3),
-	io:fwrite("Assigned integer tuple to Arg3"),
+	io:fwrite("Assigned integer tuple to Arg3\n"),
 	NTemp = element(1, Arg1),
-	io:fwrite("Assigned first element of Arg1 tuple to Ntemp"),
+	io:fwrite("Assigned first element of Arg1 tuple to Ntemp\n"),
 	N = powers(26, NTemp),
-	io:fwrite("Assigned the return value of function powers to N"),
+	io:fwrite("Assigned the return value of function powers to N\n"),
 	D = element(1, Arg2),
-	io:fwrite("Assigned first element of Arg2 tuple to D"),
+	io:fwrite("Assigned first element of Arg2 tuple to D\n"),
 	K = element(1, Arg3),
-	io:fwrite("Assigned first element of Arg3 tuble to K"),
-	io:fwrite(", followed by passing arguments N, D, and K to function program"),
+	io:fwrite("Assigned first element of Arg3 tuble to K,\n"),
+	io:fwrite("...followed by passing arguments N, D, and K to function program\n"),
 	program(N, D, K).
 
 %This function writes the first line, field names to the file.
@@ -56,10 +57,16 @@ prep_file() ->
 			file:close(G),
 			init:stop().
 
+%This is the main function which times all the calls to the methods in module hashmod.
+%Now this main function appears to be the current culprit!
 program(N, D, K) ->
+	io:fwrite("Hello World, we're up and running!!!\n"),
 	TabId = ets:new(myTable, [set]),
+	io:fwrite("The hashset table gets created?\n"),
 	PercentNum = N*D/100,
+	io:fwrite("The number of items equivalent to D percent of N is assigned?\n"),
 	InputTime = timer:tc(hashmod,hashin,[TabId, N, K]),
+	io:fwrite("Do we get the measure time to insert N items?\n"),
 	OutputTime = timer:tc(hashmod,hashout,[TabId, PercentNum, K]),
 	ReInputTime = timer:tc(hashmod,rehash,[TabId, PercentNum, K]),
 	NewLine = "\n",
