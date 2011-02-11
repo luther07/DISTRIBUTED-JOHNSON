@@ -59,9 +59,15 @@ prep_file() ->
 
 %This is the main function which times all the calls to the methods in module hashmod.
 %Now this main function appears to be the current culprit!
+%Per tv:start() table visualizer, 26 items were inserted in myTable, Table Id 8207.
+%Per tv:start() table visualizer, 676 items were inserted in myTable, Table Id 8207. I am able to examine all the data in the table.
+%Per tv:start() table visualizer, 17576 items were inserted in myTable, Table Id 8207. I am able to examine all the data in the table.
+%Per tv:start() table visualizer, 456969 items were inserted in myTable, Table Id 8207. I am able to examine all the data in the table.
+
 program(N, D, K) ->
 	io:fwrite("Hello World, we're up and running!!!\n"),
 	TabId = ets:new(myTable, [set]),
+	tv:start(),
 	io:fwrite("The hashset table gets created?\n"),
 	PercentNum = N*D/100,
 	io:fwrite("The number of items equivalent to D percent of N is assigned?\n"),
