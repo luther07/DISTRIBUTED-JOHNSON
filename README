@@ -1,0 +1,10 @@
+I. This repository holds the folders for all the assignments and
+projects for my Distributed Computing class.
+
+II. These projects will be implemented in many different languages.
+
+III. Assignment 1 is to time insertions, deletions, and re-insertions 
+into a hash table.
+
+IV. Assignment 2 is to implement a client/server "CRUD" service using 
+UDP protocol.
