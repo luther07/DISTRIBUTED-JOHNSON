@@ -13,7 +13,7 @@ let send_Dgram buff len inet port =
 	let s_Port = port ; (* port for server, 12345 *)
 	let s_addr = Unix.ADDR_INET(s_IAddress , s_Port) ; (* ? *)
 	let s_message = "hello_world" ;
-	Unix.connect s_descr s_addr; (* connect to server *)
+	Unix.connect s_descr s_addr ; (* connect to server *)
 	Unix.send s_descr s_message 0 (String.length s_message) [] ;
 	(* TODO create datagram *)
 	(* TODO write datagram to socket *)

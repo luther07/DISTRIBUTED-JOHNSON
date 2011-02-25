@@ -1,3 +1,4 @@
 #!/bin/bash
 ocamlc get_bytes_from_file.ml
-ocamlc -o get_bytes get_bytes_from_file.cmo
+ocamlc get_bytes_from_file.cmo
+ocamlc -custom unix.cma threa.ml -cclib -lunix
