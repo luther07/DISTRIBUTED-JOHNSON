@@ -1,0 +1,12 @@
+Mark Johnson
+Loyola University
+Computer Science
+Distributed Systems
+
+*This folder will contain all documentation related to my semester 
+project. 
+
+*For my project I am learning how to make a formal specification of a 
+system and how to verify a formal specification. I am using the TLA+ 
+programming language to write a consensus protocol specification and 
+verify the correctness of the specification with TLC Model Checker.
