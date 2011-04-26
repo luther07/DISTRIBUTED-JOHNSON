@@ -12,4 +12,4 @@ system and how to verify a formal specification. I am using the TLA+
 programming language to write a consensus protocol specification and 
 verify the correctness of the specification with TLC Model Checker.
 
-*I will concentrate mostly on safety properties over temporal properties. Leslie Lamport says that safety properties are where 90% of errors are found. The main goal of doing a formal specification is to find errors.
+*I will concentrate mostly on safety properties over temporal properties. Leslie Lamport says that safety properties are where 90% of errors are found. The main goal of doing a formal specification is to find errors in the logic of a system.
