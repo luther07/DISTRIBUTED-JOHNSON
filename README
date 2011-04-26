@@ -8,3 +8,6 @@ into a hash table.
 
 IV. Assignment 2 is to implement a client/server "CRUD" service using 
 UDP protocol.
+
+V. Semester Project: Formal Specification with TLA+ and writing a formal specification for a consensus protocol.
+
