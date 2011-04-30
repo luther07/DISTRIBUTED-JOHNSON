@@ -59,9 +59,9 @@ RRcv == /\ InChan1!Rcv
  *a proposed value.*)
 Next == \/ \E p \in ProposalSnd : SSend(p)
         \/ RRcv
-(*We define the specification formula, Spec. This is the main point of the module. This formula says that
- *in order for a behavior to satisfy this module's specification, formula Init must be TRUE or satisfied
- *AND formula Next must be TRUE or satisfied at all times, while allowing stutter steps where the
+(*We define the specification formula, "Spec". This is the main point of the module. This formula says that
+ *in order for a behavior to satisfy this module's specification, the initial predicate "Init" must be TRUE or satisfied
+ *and the formula "Next" must be TRUE or satisfied at all times, with the exception of allowing stutter steps where the
  *variables in1, in2, in3, out1, out2, and out3 are unchanges.*)
 Spec == Init /\ [][Next]_<<in1, in2, in3, out1, out2, out3>>
 ----------------------------------------
