@@ -6,18 +6,7 @@
 \*sending messages to eachother.
 \*********************************************************
 
-\********************************************
-\* This shows a behavior:
-\*    '.  ----      ----      ----      ----
-\*       |    |    |    |    |    |    |    |
-\*       |    |    |    |    |    |    |    |
-\*       |    |--->|    |--->|    |--->|    |
-\*       |    |    |    |    |    |    |    |
-\*       |    |    |    |    |    |    |    |
-\*        ----      ----      ----      ----  .'
-\***********************************************
-
-EXTENDS Naturals, Sequences                       \*Use these built-in modules
+EXTENDS Naturals                                  \*Use these built-in modules
 CONSTANT Proposal                                 \*Constant referring to the set of possible proposal values
 VARIABLES in1, in2, in3, out1, out2, out3, output \*variable names for in and out channels
 
@@ -82,7 +71,7 @@ Next == \/ \E p \in Proposal : SSend(p)
  *in order for a behavior to satisfy this module's specification, the initial predicate "Init" must be TRUE or satisfied
  *and the formula "Next" must be TRUE or satisfied at all times, with the exception of allowing stutter steps where the
  *variables in1, in2, in3, out1, out2, and out3 are unchanges.*)
-Spec == Init /\ [][Next]_<<in1, in2, in3, out1, out2, out3>>
+Spec == Init /\ [][Next]_<<in1, in2, in3, out1, out2, out3, output>>
 ----------------------------------------
 THEOREM Spec => []TypeInvariant
 ========================================
