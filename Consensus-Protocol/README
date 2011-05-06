@@ -13,3 +13,17 @@ programming language to write a consensus protocol specification and
 verify the correctness of the specification with TLC Model Checker.
 
 *I will concentrate mostly on safety properties over temporal properties. Leslie Lamport says that safety properties are where 90% of errors are found. The main goal of doing a formal specification is to find errors in the logic of a system.
+
+*Primary Project Documents:
+Channel.tla: comes from Lamport's Specifying Systems book. Comments are my explanations of the formulas.
+Channel.ps: this is the Channel.tla file, as typeset using TLaTeX, with command "java tla2tex.TLA Channel.tla".
+ConsensusStub.tla: this is the TLA+ module that I developed. It refers a lot to the Channel module above. 
+ConsensusStub.ps: this is the ConsensusStub.tla file, as typeset by TLaTeX, with command "java tla2tex.TLA ConsensusStub.tla".
+
+*Secondary Documents:
+Other documents are files that I created in the course of learning and studying Lamport's Specifying Systems book.
+These are mostly example exercises from the book, which I worked through.
+They are of secondary importance.
+
+
+
