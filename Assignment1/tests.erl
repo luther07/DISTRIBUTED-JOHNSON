@@ -11,10 +11,10 @@
 %Test function "powers/2" in module "mainprogram".
 test1(Base, Exp, Res) ->
 	case (mainprogram:powers(Base, Exp)) of
-		Res ->
-			true;
-		_  ->	
-			false
+		Result	->
+				true;
+		_  	->	
+				false
 	end.
 
 %Test return values from powers in File mainprogram.erl.
