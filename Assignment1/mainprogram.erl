@@ -3,20 +3,24 @@
 %%% Author  : Mark Johnson <mjohnson4@luc.edu>
 %%% Purpose : Runs the functions in module "hashmod" and times the operations
 %%% Created : 08 Feb 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Modified: 18 May 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Changelog:18 May 2011 fixed incorrect powers module
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
 -export([program/3, get_args/0, prep_file/0, powers/2]).
 
-%I had to create this functions because the BIF returns float and I need int.
-%This function has been tested and it works.
+% I had to create this functions because the BIF returns float and I need integer.
+% This function has been tested and it works. (BIF means built in function.)
+% 18 May 2011: Now this has really been tested and really works.
 powers(Base, Expo) ->
 	case Expo>0 of
 		true ->
 			Base * powers(Base, Expo-1);
 		false ->
-			Base
+			1
 	end.
+
 %This function gets the plain arguments passed to the erlang init process from the shell script.
 %This function has been presenting problems. Not sure what's wrong yet. I'll fix it in no time!
 %After adding debugging outputs I find that this function is probably working correctly.
