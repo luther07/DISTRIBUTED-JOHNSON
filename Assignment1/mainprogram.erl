@@ -10,7 +10,7 @@
 -module(mainprogram).
 -export([program/3, get_args/0, prep_file/0, powers/2]).
 
-% I had to create this functions because the BIF returns float and I need integer.
+% I created this functions because the BIF returns float and I need integer.
 % This function has been tested and it works. (BIF means built in function.)
 % 18 May 2011: Now this has really been tested and really works.
 powers(Base, Expo) ->
@@ -26,28 +26,20 @@ powers(Base, Expo) ->
 %After adding debugging outputs I find that this function is probably working correctly.
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
-	io:fwrite("Grabbed my plain args\n"),
 	Temp1 = hd(MyArgs),
-	io:fwrite("Assigned list head to Temp1\n"),
 	Temp2 = hd(tl(MyArgs)),
-	io:fwrite("Assigned sublist head to Temp2\n"),
 	Temp3 = hd(tl(tl(MyArgs))),
-	io:fwrite("Assigned subsublist head to Temp3\n"),
 	Arg1 = string:to_integer(Temp1),
-	io:fwrite("Assigned integer tuple to Arg1\n"),
 	Arg2 = string:to_integer(Temp2),
-	io:fwrite("Assigned integer tuple to Arg2\n"),
 	Arg3 = string:to_integer(Temp3),
-	io:fwrite("Assigned integer tuple to Arg3\n"),
 	NTemp = element(1, Arg1),
-	io:fwrite("Assigned first element of Arg1 tuple to Ntemp\n"),
 	N = powers(26, NTemp),
-	io:fwrite("Assigned the return value of function powers to N\n"),
+	%io:fwrite("Assigned the return value of function powers to N\n"),
 	D = element(1, Arg2),
-	io:fwrite("Assigned first element of Arg2 tuple to D\n"),
+	%io:fwrite("Assigned first element of Arg2 tuple to D\n"),
 	K = element(1, Arg3),
-	io:fwrite("Assigned first element of Arg3 tuble to K,\n"),
-	io:fwrite("...followed by passing arguments N, D, and K to function program\n"),
+	%io:fwrite("Assigned first element of Arg3 tuble to K,\n"),
+	%io:fwrite("...followed by passing arguments N, D, and K to function program\n"),
 	program(N, D, K).
 
 %This function writes the first line, field names to the file.
