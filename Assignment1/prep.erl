@@ -1,8 +1,9 @@
 %%%----------------------------------------------------------------------
 %%% File    : prep.erl
 %%% Author  : Mark Johnson <mjohnson4@luc.edu>
-%%% Purpose : Runs the functions in module "hashmod" and times the operations
+%%% Purpose : Preps the file, "Results.txt"
 %%% Created : 10 Feb 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Modified: 17 May 2011 by Mark Johnson <mjohnson@luc.edu>
 %%%----------------------------------------------------------------------
 
 -module(prep).
