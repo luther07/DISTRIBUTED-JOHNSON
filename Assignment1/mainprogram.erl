@@ -15,6 +15,7 @@
 % (BIF means built-in function).
 % This function has been tested and it works.
 % 18 May 2011: Now this function has really been tested and really works.
+% Case where Base equals 0 is not handled.
 % See tests:test_series/0 for tests.
 
 powers(Base, Expo) ->
