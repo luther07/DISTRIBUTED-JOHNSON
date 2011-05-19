@@ -10,9 +10,13 @@
 -module(mainprogram).
 -export([program/3, get_args/0, prep_file/0, powers/2]).
 
+% powers/2 comments:
 % I created this functions because the BIF returns float and I need integer.
-% This function has been tested and it works. (BIF means built in function.)
-% 18 May 2011: Now this has really been tested and really works.
+% (BIF means built-in function).
+% This function has been tested and it works.
+% 18 May 2011: Now this function has really been tested and really works.
+% See tests:test_series/0 for tests.
+
 powers(Base, Expo) ->
 	case Expo>0 of
 		true ->
