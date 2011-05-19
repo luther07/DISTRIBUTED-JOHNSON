@@ -21,23 +21,25 @@ test1(Base, Exp, Result) ->
 %Test series for "powers/2" in module "mainprogram".
 test_series()	->
 	
-	io:fwrite("Test fail: "),
+	io:fwrite("Test fail? "),
 	io:fwrite(tests:test1(2, 5, 64)),
 
-	io:fwrite("\nTest 0: "),
+	io:fwrite("\nTest 0? "),
 	io:fwrite(tests:test1(2, 0, 1)),
 
-	io:fwrite("\nTest 1: "),
+	io:fwrite("\nTest 1? "),
 	io:fwrite(tests:test1(2, 1, 2)),
 
-	io:fwrite("\nTest 2: "),
+	io:fwrite("\nTest 2? "),
 	io:fwrite(tests:test1(2, 2, 4)),
 
-	io:fwrite("\nTest 3: "),
+	io:fwrite("\nTest 3? "),
 	io:fwrite(tests:test1(2, 3, 8)),
 
-	io:fwrite("\nTest 4: "),
+	io:fwrite("\nTest 4? "),
 	io:fwrite(tests:test1(2, 4, 16)),
 
-	io:fwrite("\nTest 5: "),
-	io:fwrite(tests:test1(2, 5, 32)).
+	io:fwrite("\nTest 5? "),
+	io:fwrite(tests:test1(2, 5, 32)),
+
+	io:fwrite("\n").
