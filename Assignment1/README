@@ -1,5 +1,18 @@
 README file-Assignment1
+
 Credit for randomstring.erl goes to:
 	https://github.com/benahlan/randomstring.git
 
+Started building some tests the week of 5/16/11.
+Fixed blatant error in powers/2 function found during testing.
 
+I. Process
+	A. Starts by running the bash script, "RunHashSets.sh".
+	B. The bash script compiles all of the necessary modules
+	C. Then the bash script runs method "prep_file" in module "prep" and runs the "stop" method from the "init" module.
+	D. The bash script prints "file is prepped".
+	E. Then the file uses a loop to repeatedly run method "get_args" from module "mainprogram", passing parameters.
+	F. Each execution of method "get_args" in module "mainprogram" will first get the arguments passed from the bash script.
+	G. Then the method converts the strings arguments to integers.
+	H. Then the method assigns the argument integers to variables N, D, and K.
+	I. Finally the "get_args" method calls the method "program", using arguments N, D, and K. 

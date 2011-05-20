@@ -9,7 +9,7 @@
 -module(tests).
 -export([test1/3, test_series/0]).
 
-%Test function "powers/2" in module "mainprogram".
+% Let's test function "powers/2" in module "mainprogram".
 test1(Base, Exp, Result) ->
 	case (mainprogram:powers(Base, Exp)) of
 		Result	->
@@ -21,9 +21,6 @@ test1(Base, Exp, Result) ->
 %Test series for "powers/2" in module "mainprogram".
 test_series()	->
 	
-	io:fwrite("Test fail? "),
-	io:fwrite(tests:test1(2, 5, 64)),
-
 	io:fwrite("\nTest 0? "),
 	io:fwrite(tests:test1(2, 0, 1)),
 
@@ -42,4 +39,7 @@ test_series()	->
 	io:fwrite("\nTest 5? "),
 	io:fwrite(tests:test1(2, 5, 32)),
 
+	io:fwrite("\nTest 6? "),
+	io:fwrite(tests:test1(2, 6, 64)),
+	
 	io:fwrite("\n").
