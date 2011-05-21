@@ -8,7 +8,7 @@
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
--export([program/3, get_args/0, prep_file/0, powers/2]).
+-export([program/3, get_args/0, powers/2]).
 
 % powers/2 comments:
 % I created this functions because the BIF returns float and I need integer.

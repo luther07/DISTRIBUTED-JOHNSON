@@ -10,25 +10,24 @@ I. Process
 	A. Bash script "RunHashSets.sh":
 		1. Process starts when you execute the bash script, "RunHashSets.sh".
 		2. The bash script compiles all of the necessary modules.
-		3. Then the bash script executes function "prep_file" in module "prep" and runs the "stop" function from the "init" module.
+		3. Then the bash script executes the "prep" module's function "prep_file" followed by the "init" module's "stop" function.
 		4. The bash script prints "file is prepped".
-		5. Then the bash script uses a loop to repeatedly run function "get_args" in module "mainprogram", passing parameters N, D, and K.
+		5. Then the bash script uses a loop to repeatedly run the "mainprogram" module's function "get_args", passing parameters N, D, and K.
 
-	B. In the bash script loop, each execution of function "get_args", in module "mainprogram":
+	B. Each execution of the "mainprogram" module's function "get_args" does the following:
 		1. Each execution will first get the arguments passed from the bash script.
 		2. Then the function converts the string arguments to integers.
-		3. Then the function assigns the argument integers to variables N, D, and K.
-		4. Finally the "get_args" function calls the function "program" in "mainprogram" module, passing parameters N, D, and K.
+		3. Then the function assigns to variables N, D, and K the converted integer arguments.
+		4. Finally the "get_args" function calls the "mainprogram" module's function "program", passing parameters N, D, and K.
 	
 	C. Execution of function "program" in "mainprogram" module:
 		1. The function assigns to variable "TabId" a new ets (erlang term storage) table of type set.
-		2. Method "start" from module "tv" is executed, to start a table visualizer.
-		3. We assign the value of N*D/100 to the variable PercentNum.
-		4. We measure the amount of time it takes to execute function "hashin" in module "hashmod", passing parameters TabId, N, and K, and assign this value to the variable "InputTime".
-		5. We measure the amount of time it takes to execute function "hashout" in module "hashmod", passing parameters TabId, PercentNum, and K.
-		6. We measure the amount of time it takes to execute function "rehash" in module "hashmod", passing parameters TabId, PercentNum, and K.
-		7. We extract the time measured for executing "hashin" and append to file N, the time measure, and a comma.
-		8. We extract the time measured for executing "hashout" and append to file the time measure, and a comma.
-		9. We extract the time measured for executing "rehash" and append to file the time measure and a newline character.
-		10.We execute the stop function from the init module.		
- 
+		2. We assign the value of N*D/100 to the variable PercentNum.
+		3. We measure the amount of time it takes to execute function "hashin" in module "hashmod", passing parameters TabId, N, and K, and assign this value to the variable "InputTime".
+		4. We measure the amount of time it takes to execute function "hashout" in module "hashmod", passing parameters TabId, PercentNum, and K.
+		5. We measure the amount of time it takes to execute function "rehash" in module "hashmod", passing parameters TabId, PercentNum, and K.
+		6. We extract the time measured for executing "hashin" and append to file N, the time measure, and a comma.
+		7. We extract the time measured for executing "hashout" and append to file the time measure, and a comma.
+		8. We extract the time measured for executing "rehash" and append to file the time measure and a newline character.
+		9. We execute the init module's stop function.		
+		10.We go back to the start of the loop. 
