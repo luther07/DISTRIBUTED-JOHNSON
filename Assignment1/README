@@ -21,7 +21,11 @@ I. Process
 		4. Finally the "get_args" function calls the function "program" in "mainprogram" module, passing parameters N, D, and K.
 	
 	C. Execution of function "program" in "mainprogram" module:
-		1. Function "program" prints "Hello World, we're up and running!!!".
-		2. The function assigns to variable "TabId" a new ets (erlang term storage) table of type set.
-		3. Method "start" from module "tv" is executed, to start a table visualizer.
-	M. We print 
+		1. The function assigns to variable "TabId" a new ets (erlang term storage) table of type set.
+		2. Method "start" from module "tv" is executed, to start a table visualizer.
+		3. We assign the value of N*D/100 to the variable PercentNum.
+		4. We measure the amount of time it takes to execute function "hashin" in module "hashmod", passing parameters TabId, N, and K, and assign this value to the variable "InputTime".
+		5. We measure the amount of time it takes to execute function "hashout" in module "hashmod", passing parameters TabId, PercentNum, and K.
+		6. We measure the amount of time it takes to execute function "rehash" in module "hashmod", passing parameters TabId, PercentNum, and K.
+		
+ 

@@ -66,14 +66,10 @@ prep_file() ->
 %Per tv:start() table visualizer, 456969 items were inserted in myTable, Table Id 8207. I am able to examine all the data in the table.
 
 program(N, D, K) ->
-	io:fwrite("Hello World, we're up and running!!!\n"),
 	TabId = ets:new(myTable, [set]),
 	tv:start(),
-	io:fwrite("The hashset table gets created?\n"),
 	PercentNum = N*D/100,
-	io:fwrite("The number of items equivalent to D percent of N is assigned?\n"),
 	InputTime = timer:tc(hashmod,hashin,[TabId, N, K]),
-	io:fwrite("Do we get the measure time to insert N items?\n"),
 	OutputTime = timer:tc(hashmod,hashout,[TabId, PercentNum, K]),
 	ReInputTime = timer:tc(hashmod,rehash,[TabId, PercentNum, K]),
 	NewLine = "\n",
