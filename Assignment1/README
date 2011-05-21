@@ -11,8 +11,7 @@ I. Process
 		1. Process starts when you execute the bash script, "RunHashSets.sh".
 		2. The bash script compiles all of the necessary modules.
 		3. Then the bash script executes the "prep" module's function "prep_file" followed by the "init" module's "stop" function.
-		4. The bash script prints "file is prepped".
-		5. Then the bash script uses a loop to repeatedly run the "mainprogram" module's function "get_args", passing parameters N, D, and K.
+		4. Then the bash script uses a loop to repeatedly run the "mainprogram" module's function "get_args", passing parameters N, D, and K.
 
 	B. Each execution of the "mainprogram" module's function "get_args" does the following:
 		1. Each execution will first get the arguments passed from the bash script.
