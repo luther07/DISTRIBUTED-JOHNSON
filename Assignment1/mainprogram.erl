@@ -39,12 +39,8 @@ get_args() ->
 	Arg3 = string:to_integer(Temp3),
 	NTemp = element(1, Arg1),
 	N = powers(26, NTemp),
-	%io:fwrite("Assigned the return value of function powers to N\n"),
 	D = element(1, Arg2),
-	%io:fwrite("Assigned first element of Arg2 tuple to D\n"),
 	K = element(1, Arg3),
-	%io:fwrite("Assigned first element of Arg3 tuble to K,\n"),
-	%io:fwrite("...followed by passing arguments N, D, and K to function program\n"),
 	program(N, D, K).
 
 %This is the main function which times all the calls to the methods in module hashmod.
