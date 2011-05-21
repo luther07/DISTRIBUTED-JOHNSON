@@ -18,5 +18,6 @@ prep_file() ->
 			file:write(G,"D,"),
 			file:write(G,"K\n,"),
 			file:close(G),
+			io:fwrite("your file is prepped"),
 			init:stop().
 
