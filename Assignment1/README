@@ -27,5 +27,8 @@ I. Process
 		4. We measure the amount of time it takes to execute function "hashin" in module "hashmod", passing parameters TabId, N, and K, and assign this value to the variable "InputTime".
 		5. We measure the amount of time it takes to execute function "hashout" in module "hashmod", passing parameters TabId, PercentNum, and K.
 		6. We measure the amount of time it takes to execute function "rehash" in module "hashmod", passing parameters TabId, PercentNum, and K.
-		
+		7. We extract the time measured for executing "hashin" and append to file N, the time measure, and a comma.
+		8. We extract the time measured for executing "hashout" and append to file the time measure, and a comma.
+		9. We extract the time measured for executing "rehash" and append to file the time measure and a newline character.
+		10.We execute the stop function from the init module.		
  

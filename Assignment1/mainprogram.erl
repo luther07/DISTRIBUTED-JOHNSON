@@ -47,7 +47,7 @@ get_args() ->
 	%io:fwrite("...followed by passing arguments N, D, and K to function program\n"),
 	program(N, D, K).
 
-%This function writes the first line, field names to the file.
+%This function writes the first line and field names to the output file.
 %This function has been tested and it works.
 prep_file() ->
 	{ok, G}=file:open("Results.txt", [append]),
@@ -59,12 +59,6 @@ prep_file() ->
 			init:stop().
 
 %This is the main function which times all the calls to the methods in module hashmod.
-%Now this main function appears to be the current culprit!
-%Per tv:start() table visualizer, 26 items were inserted in myTable, Table Id 8207.
-%Per tv:start() table visualizer, 676 items were inserted in myTable, Table Id 8207. I am able to examine all the data in the table.
-%Per tv:start() table visualizer, 17576 items were inserted in myTable, Table Id 8207. I am able to examine all the data in the table.
-%Per tv:start() table visualizer, 456969 items were inserted in myTable, Table Id 8207. I am able to examine all the data in the table.
-
 program(N, D, K) ->
 	TabId = ets:new(myTable, [set]),
 	tv:start(),
@@ -78,10 +72,11 @@ program(N, D, K) ->
 	case InputTime of
 		{Time1,_} ->
 			Output1 = integer_to_list(Time1),
-			io:fwrite(Output1),
-			io:fwrite("\n"),
+			%io:fwrite(Output1),
+			%io:fwrite("\n"),
 			{ok, F}=file:open("Results.txt", [append]),
 			file:write(F, Number),
+			file:write(F, Comma),
 			file:write(F,Output1),
 			file:write(F,Comma)
 	end,
