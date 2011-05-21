@@ -68,4 +68,5 @@ program(N, D, K) ->
 			file:write(F,NewLine),
 			file:close(F)
 	end,
+	io:fwrite("Loop finished"),
 	init:stop().
