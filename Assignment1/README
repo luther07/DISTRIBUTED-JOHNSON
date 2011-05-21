@@ -10,17 +10,18 @@ I. Process
 	A. Bash script "RunHashSets.sh":
 		1. Process starts when you execute the bash script, "RunHashSets.sh".
 		2. The bash script compiles all of the necessary modules.
-		3. Then the bash script executes method "prep_file" in module "prep" and runs the "stop" method from the "init" module.
+		3. Then the bash script executes function "prep_file" in module "prep" and runs the "stop" function from the "init" module.
 		4. The bash script prints "file is prepped".
-		5. Then the bash script uses a loop to repeatedly run method "get_args" in module "mainprogram", passing parameters N, D, and K.
+		5. Then the bash script uses a loop to repeatedly run function "get_args" in module "mainprogram", passing parameters N, D, and K.
 
-	B. In the bash script loop, each execution of method "get_args", in module "mainprogram":
+	B. In the bash script loop, each execution of function "get_args", in module "mainprogram":
 		1. Each execution will first get the arguments passed from the bash script.
-		2. Then the method converts the string arguments to integers.
-		3. Then the method assigns the argument integers to variables N, D, and K.
-		4. Finally the "get_args" method calls the method "program" in "mainprogram" module, passing arguments N, D, and K.
+		2. Then the function converts the string arguments to integers.
+		3. Then the function assigns the argument integers to variables N, D, and K.
+		4. Finally the "get_args" function calls the function "program" in "mainprogram" module, passing parameters N, D, and K.
 	
-	C. Method "program" prints "Hello World, we're up and running!!!".
-	K. It assigns to variable "TabId" a new ets (erlang term storage) table of type set.
-	L. Method "start" from module "tv" is executed, to start a table visualizer.
+	C. Execution of function "program" in "mainprogram" module:
+		1. Function "program" prints "Hello World, we're up and running!!!".
+		2. The function assigns to variable "TabId" a new ets (erlang term storage) table of type set.
+		3. Method "start" from module "tv" is executed, to start a table visualizer.
 	M. We print 
