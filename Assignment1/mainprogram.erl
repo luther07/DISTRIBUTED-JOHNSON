@@ -56,8 +56,6 @@ program(N, D, K) ->
 	case InputTime of
 		{Time1,_} ->
 			Output1 = integer_to_list(Time1),
-			%io:fwrite(Output1),
-			%io:fwrite("\n"),
 			{ok, F}=file:open("Results.txt", [append]),
 			file:write(F, Number),
 			file:write(F, Comma),
@@ -67,16 +65,12 @@ program(N, D, K) ->
 	case OutputTime of
 		{Time2,_} ->
 			Output2 = integer_to_list(Time2),
-			io:fwrite(Output2),
-			io:fwrite("\n"),
 			file:write(F,Output2),
 			file:write(F,Comma)
 	end,
 	case ReInputTime of
 		{Time3,_} ->
 			Output3 = integer_to_list(Time3),
-			io:fwrite(Output3),
-			io:fwrite("\n"),
 			file:write(F,Output3),
 			file:write(F,NewLine),
 			file:close(F)
