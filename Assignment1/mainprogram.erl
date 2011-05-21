@@ -47,21 +47,9 @@ get_args() ->
 	%io:fwrite("...followed by passing arguments N, D, and K to function program\n"),
 	program(N, D, K).
 
-%This function writes the first line and field names to the output file.
-%This function has been tested and it works.
-prep_file() ->
-	{ok, G}=file:open("Results.txt", [append]),
-			file:write(G,"Number,"),
-			file:write(G,"N,"),
-			file:write(G,"D,"),
-			file:write(G,"K\n,"),
-			file:close(G),
-			init:stop().
-
 %This is the main function which times all the calls to the methods in module hashmod.
 program(N, D, K) ->
 	TabId = ets:new(myTable, [set]),
-	tv:start(),
 	PercentNum = N*D/100,
 	InputTime = timer:tc(hashmod,hashin,[TabId, N, K]),
 	OutputTime = timer:tc(hashmod,hashout,[TabId, PercentNum, K]),
