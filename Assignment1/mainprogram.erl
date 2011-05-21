@@ -3,8 +3,7 @@
 %%% Author  : Mark Johnson <mjohnson4@luc.edu>
 %%% Purpose : Runs the functions in module "hashmod" and times the operations
 %%% Created : 08 Feb 2011 by Mark Johnson <mjohnson4@luc.edu>
-%%% Modified: 18 May 2011 by Mark Johnson <mjohnson4@luc.edu>
-%%% Changelog:18 May 2011 fixed incorrect powers module
+%%% Modified: 21 May 2011 by Mark Johnson <mjohnson4@luc.edu>
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
@@ -13,7 +12,6 @@
 % powers/2 comments:
 % I created this functions because the BIF returns float and I need integer.
 % (BIF means built-in function).
-% This function has been tested and it works.
 % 18 May 2011: Now this function has really been tested and really works.
 % Case where Base equals 0 is not handled.
 % See tests:test_series/0 for tests.
@@ -27,16 +25,11 @@ powers(Base, Expo) ->
 	end.
 
 %This function gets the plain arguments passed to the erlang init process from the shell script.
-%This function has been presenting problems. Not sure what's wrong yet. I'll fix it in no time!
-%After adding debugging outputs I find that this function is probably working correctly.
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
-	Temp1 = hd(MyArgs),
-	Temp2 = hd(tl(MyArgs)),
-	Temp3 = hd(tl(tl(MyArgs))),
-	Arg1 = string:to_integer(Temp1),
-	Arg2 = string:to_integer(Temp2),
-	Arg3 = string:to_integer(Temp3),
+	Arg1 = string:to_integer(hd(MyArgs)),
+	Arg2 = string:to_integer(hd(tl(MyArgs))),
+	Arg3 = string:to_integer(hd(tl(tl(MyArgs)))),
 	NTemp = element(1, Arg1),
 	N = powers(26, NTemp),
 	D = element(1, Arg2),
