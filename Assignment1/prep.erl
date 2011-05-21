@@ -9,7 +9,7 @@
 -module(prep).
 -export([prep_file/0]).
 
-%This function writes the first line, field names to the file.
+%This function writes the first line and field names to the file.
 %This function has been tested and it works.
 prep_file() ->
 	{ok, G}=file:open("Results.txt", [append]),
