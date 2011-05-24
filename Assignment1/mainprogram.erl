@@ -7,7 +7,7 @@
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
--export([program/3, get_args/0, powers/2]).
+-export([program/0, get_args/0, powers/2]).
 
 % powers/2 comments:
 % I created this functions because the BIF returns float and I need integer.
@@ -35,10 +35,19 @@ get_args() ->
 	N = powers(26, NTemp),
 	D = element(1, Arg2),
 	K = element(1, Arg3),
-	program(N, D, K).
+	{N, D, K}.
 
 %This is the main function which times all the calls to the methods in module hashmod.
-program(N, D, K) ->
+program() ->	
+	PlainArgs = init:get_plain_arguments(),
+	Arg1 = string:to_integer(hd(PlainArgs)),
+	Arg2 = string:to_integer(hd(tl(PlainArgs))),
+	Arg3 = string:to_integer(hd(tl(tl(PlainArgs)))),
+	NumberOfChars = element(1, Arg1),
+	N = powers(26, NumberOfChars),
+	D = element(1, Arg2),
+	K = element(1, Arg3),
+	
 	TabId = ets:new(myTable, [set]),
 	PercentNum = N*D/100,
 	InputTime = timer:tc(hashmod,hashin,[TabId, N, K]),
