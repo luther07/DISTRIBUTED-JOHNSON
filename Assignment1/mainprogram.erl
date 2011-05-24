@@ -13,10 +13,11 @@
 % I created this functions because the BIF returns float and I need integer.
 % (BIF means built-in function).
 % 18 May 2011: Now this function has really been tested and really works.
-% Case where Base equals 0 is not handled.
+% 24 May 2011: Add when clause "when Base>0" so run-time error if function called using Base<=0.
+% 24 May 2011: This when clause is an example of non-defensive programming, a practice encouraged in Erlang.
 % See tests:test_series/0 for tests.
 
-powers(Base, Expo) ->
+powers(Base, Expo) when Base>0 ->
 	case Expo>0 of
 		true ->
 			Base * powers(Base, Expo-1);
