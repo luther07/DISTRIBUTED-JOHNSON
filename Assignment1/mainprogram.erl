@@ -14,18 +14,19 @@
 % (BIF means built-in function).
 % 18 May 2011: Now this function has really been tested and really works.
 % 24 May 2011: Add when clause "when Base>0" so run-time error if function called using Base<=0.
-% 24 May 2011: This when clause is an example of non-defensive programming, a practice encouraged in Erlang.
+% 24 May 2011: The "when" clause is an example of non-defensive programming, a practice encouraged in Erlang.
 % See tests:test_series/0 for tests.
 
 powers(Base, Expo) when Base>0 ->
-	case Expo>0 of
-		true ->
-			Base * powers(Base, Expo-1);
-		false ->
-			1
-	end.
+			case Expo>0 of
+				true ->
+					Base * powers(Base, Expo-1);
+				false ->
+					1
+			end.
 
 %This function gets the plain arguments passed to the erlang init process from the shell script.
+%We are no longer executing this function. We have incorporated this into function "program".
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
 	Arg1 = string:to_integer(hd(MyArgs)),
