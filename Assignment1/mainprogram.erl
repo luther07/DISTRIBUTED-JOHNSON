@@ -28,16 +28,23 @@ powers(Base, Expo) when Base>0 ->
 
 %This function gets the plain arguments passed to the erlang init process from the shell script.
 %We are no longer executing this function. We have incorporated this into function "program".
+
+-spec(get_args(none()) -> {string(), string(), string()})
 get_args() ->
 	MyArgs = init:get_plain_arguments(),
-	Arg1 = string:to_integer(hd(MyArgs)),
-	Arg2 = string:to_integer(hd(tl(MyArgs))),
-	Arg3 = string:to_integer(hd(tl(tl(MyArgs)))),
-	NTemp = element(1, Arg1),
-	N = powers(26, NTemp),
-	D = element(1, Arg2),
-	K = element(1, Arg3),
-	{N, D, K}.
+	case MyArgs of
+		{[]} ->
+			[],
+		{_,_,_} ->
+			Arg1 = string:to_integer(hd(MyArgs)),
+			Arg2 = string:to_integer(hd(tl(MyArgs))),
+			Arg3 = string:to_integer(hd(tl(tl(MyArgs)))),
+			NTemp = element(1, Arg1),
+			N = powers(26, NTemp),
+			D = element(1, Arg2),
+			K = element(1, Arg3),
+			{N, D, K}
+		end.
 
 %This is the main function which times all the calls to the methods in module hashmod.
 program() ->	
