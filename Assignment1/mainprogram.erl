@@ -17,6 +17,7 @@
 % 24 May 2011: The "when" clause is an example of non-defensive programming, a practice encouraged in Erlang.
 % See tests:test_series/0 for tests.
 
+-spec(powers(Base::int(), Expo::int()) -> int()).
 powers(Base, Expo) when Base>0 ->
 			case Expo>0 of
 				true ->
