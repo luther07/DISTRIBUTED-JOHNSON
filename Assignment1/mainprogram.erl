@@ -17,7 +17,7 @@
 % 24 May 2011: The "when" clause is an example of non-defensive programming, a practice encouraged in Erlang.
 % See tests:test_series/0 for tests.
 
--spec(powers(Base::int(), Expo::int()) -> int()).
+-spec(powers(Base::integer(), Expo::integer()) -> integer()).
 powers(Base, Expo) when Base>0 ->
    case Expo>0 of
       true ->
@@ -29,7 +29,7 @@ powers(Base, Expo) when Base>0 ->
 %This function gets the plain arguments passed to the erlang init process from the shell script.
 %We are no longer executing this function. We have incorporated this into function "program".
 
--spec(get_args(none()) -> {string(), string(), string()}).
+-spec(get_args() -> {string(), string(), string()}).
 get_args() ->
    MyArgs = init:get_plain_arguments(),
       case MyArgs of
