@@ -3,6 +3,7 @@
 %%% Author  : Mark Johnson <mjohnson4@luc.edu>
 %%% Purpose : Methods to fill, delete records from, and re-fill a hash table
 %%% Created : 08 Feb 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Modified: 14 Jun 2011 by Mark Johnson <mjohnson4@luc.edu>
 %%%----------------------------------------------------------------------
 
 -module(hashmod).
