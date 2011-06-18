@@ -8,15 +8,14 @@
 
 -module(mainprogram_tests).
 -include_lib("eunit/include/eunit.hrl").
--export([powers_test/0]).
 
 % Let's test function "powers/2" in module "mainprogram".
 powers_test() ->
-   ?assertequal(mainprogram:powers(2,0),1),
-   ?assertequal(mainprogram:powers(2,1),2),
-   ?assertequal(mainprogram:powers(2,2),4),
-   ?assertequal(mainprogram:powers(2,3)8),
-   ?assertequal(mainprogram:powers(2,4)16),
-   ?assertequal(mainprogram:powers(2,5),32),
-   ?assertequal(mainprogram:powers(2,6),64).
+   ?assertEqual(mainprogram:powers(2,0),1),
+   ?assertEqual(mainprogram:powers(2,1),2),
+   ?assertEqual(mainprogram:powers(2,2),4),
+   ?assertEqual(mainprogram:powers(2,3),8),
+   ?assertEqual(mainprogram:powers(2,4),16),
+   ?assertEqual(mainprogram:powers(2,5),32),
+   ?assertEqual(mainprogram:powers(2,6),64).
 
