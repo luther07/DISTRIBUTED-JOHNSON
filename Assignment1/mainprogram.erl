@@ -8,7 +8,8 @@
 
 -module(mainprogram).
 -include_lib("eunit/include/eunit.hrl").
--export([program/0, get_args/0, powers/2]).
+-import(nobif, [powers/2]).
+-export([program/0, get_args/0]).
 
 %This function gets the plain arguments passed to the erlang init process from the shell script.
 %We are no longer executing this function. We have incorporated this into function "program".
