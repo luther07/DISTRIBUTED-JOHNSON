@@ -10,20 +10,6 @@
 -include_lib("eunit/include/eunit.hrl").
 -export([program/0, get_args/0, powers/2]).
 
-% powers/2 comments:
-% I created this functions because the BIF returns float and I need integer. (BIF means built-in function).
-% The "when" clause is an example of non-defensive programming, a practice encouraged in Erlang.
-% See tests:test_series/0 for tests.
-
--spec(powers(Base::integer(), Expo::integer()) -> integer()).
-powers(Base, Expo) when Base>0 ->
-   case Expo>0 of
-      true ->
-         Base * powers(Base, Expo-1);
-      false ->
-         1
-   end.
-
 %This function gets the plain arguments passed to the erlang init process from the shell script.
 %We are no longer executing this function. We have incorporated this into function "program".
 
