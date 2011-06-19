@@ -3,18 +3,16 @@
 %%% Author  : Mark Johnson <mjohnson4@luc.edu>
 %%% Purpose : Runs the functions in module "hashmod" and times the operations
 %%% Created : 08 Feb 2011 by Mark Johnson <mjohnson4@luc.edu>
-%%% Modified: 21 May 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Modified: 18 June 2011 by Mark Johnson <mjohnson4@luc.edu>
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
+-include_lib("eunit/include/eunit.hrl").
 -export([program/0, get_args/0, powers/2]).
 
 % powers/2 comments:
-% I created this functions because the BIF returns float and I need integer.
-% (BIF means built-in function).
-% 18 May 2011: Now this function has really been tested and really works.
-% 24 May 2011: Add when clause "when Base>0" so run-time error if function called using Base<=0.
-% 24 May 2011: The "when" clause is an example of non-defensive programming, a practice encouraged in Erlang.
+% I created this functions because the BIF returns float and I need integer. (BIF means built-in function).
+% The "when" clause is an example of non-defensive programming, a practice encouraged in Erlang.
 % See tests:test_series/0 for tests.
 
 -spec(powers(Base::integer(), Expo::integer()) -> integer()).
@@ -31,18 +29,15 @@ powers(Base, Expo) when Base>0 ->
 
 -spec(get_args() -> {string(), string(), string()}).
 get_args() ->
-   MyArgs = init:get_plain_arguments(),
-      case MyArgs of
-         {_,_,_} ->
-            Arg1 = string:to_integer(hd(MyArgs)),
-            Arg2 = string:to_integer(hd(tl(MyArgs))),
-            Arg3 = string:to_integer(hd(tl(tl(MyArgs)))),
-            NTemp = element(1, Arg1),
-            N = powers(26, NTemp),
-            D = element(1, Arg2),
-            K = element(1, Arg3),
-            {N, D, K}
-      end.
+   [A,B,C] = init:get_plain_arguments(),
+   Arg1 = string:to_integer(A),
+   Arg2 = string:to_integer(B),
+   Arg3 = string:to_integer(C),
+   NTemp = element(1, Arg1),
+   N = powers(26, NTemp),
+   D = element(1, Arg2),
+   K = element(1, Arg3),
+   [N, D, K].
 
 %This is the main function which times all the calls to the methods in module hashmod.
 program() ->	
