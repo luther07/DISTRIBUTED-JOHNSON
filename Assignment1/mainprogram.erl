@@ -9,31 +9,16 @@
 -module(mainprogram).
 -include_lib("eunit/include/eunit.hrl").
 -import(nobif, [powers/2]).
--export([program/0, get_args/0]).
+-export([program/0]).
 
-%This function gets the plain arguments passed to the erlang init process from the shell script.
-%We are no longer executing this function. We have incorporated this into function "program".
-
--spec(get_args() -> {string(), string(), string()}).
-get_args() ->
+%This is the main function which times all the calls to the methods in module hashmod.
+program() ->
    [A,B,C] = init:get_plain_arguments(),
    Arg1 = string:to_integer(A),
    Arg2 = string:to_integer(B),
    Arg3 = string:to_integer(C),
    NTemp = element(1, Arg1),
    N = powers(26, NTemp),
-   D = element(1, Arg2),
-   K = element(1, Arg3),
-   [N, D, K].
-
-%This is the main function which times all the calls to the methods in module hashmod.
-program() ->	
-   PlainArgs = init:get_plain_arguments(),
-   Arg1 = string:to_integer(hd(PlainArgs)),
-   Arg2 = string:to_integer(hd(tl(PlainArgs))),
-   Arg3 = string:to_integer(hd(tl(tl(PlainArgs)))),
-   NumberOfChars = element(1, Arg1),
-   N = powers(26, NumberOfChars),
    D = element(1, Arg2),
    K = element(1, Arg3),
 	
