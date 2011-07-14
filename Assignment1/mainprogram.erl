@@ -36,19 +36,19 @@ program() ->
 %to input the sample points into the key/value store, followed by comma.
    case InputTime of
       {Time1,_} ->
-         Output1 = integer_to_list(Time1),
+         Output1 = integer_to_list(Time1)
    end,
 
 %Writing to file, the time in milliseconds to delete the sample points from the key/value store, followed by comma.
    case OutputTime of
       {Time2,_} ->
-         Output2 = integer_to_list(Time2),
+         Output2 = integer_to_list(Time2)
    end,
 
 %Writing to file, the time in milliseconds to re-input the sample points into the key/value store. 
    case ReInputTime of
       {Time3,_} ->
-         Output3 = integer_to_list(Time3),
+         Output3 = integer_to_list(Time3)
    end,
 
 %Write block. Writing our data to the file.
