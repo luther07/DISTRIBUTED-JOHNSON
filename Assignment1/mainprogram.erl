@@ -6,6 +6,12 @@
 %%% Modified: 14 July 2011 by Mark Johnson <mjohnson4@luc.edu>
 %%%----------------------------------------------------------------------
 
+%%%----------------------------------------------------------------------
+%%% TODO: Take the file i/o statements out of the case statements,
+%%%       put the i/o statements in a separate block. Then the
+%%%       case statements will be shorter and simpler.
+%%%----------------------------------------------------------------------
+
 -module(mainprogram).
 -include_lib("eunit/include/eunit.hrl").
 -import(nobif, [powers/2]).
