@@ -37,27 +37,29 @@ program() ->
    case InputTime of
       {Time1,_} ->
          Output1 = integer_to_list(Time1),
-         file:write(F, Number),
-         file:write(F, Comma),
-         file:write(F,Output1),
-         file:write(F,Comma)
    end,
 
 %Writing to file, the time in milliseconds to delete the sample points from the key/value store, followed by comma.
    case OutputTime of
       {Time2,_} ->
          Output2 = integer_to_list(Time2),
-         file:write(F,Output2),
-         file:write(F,Comma)
    end,
 
 %Writing to file, the time in milliseconds to re-input the sample points into the key/value store. 
    case ReInputTime of
       {Time3,_} ->
          Output3 = integer_to_list(Time3),
-         file:write(F,Output3),
-         file:write(F,NewLine)
    end,
+
+%Write block. Writing our data to the file.
+file:write(F,Number),
+file:write(F,Comma),
+file:write(F,Output1),
+file:write(F,Comma),
+file:write(F,Output2),
+file:write(F,Comma),
+file:write(F,Output3),
+file:write(F,NewLine),
 
 %Close file Results.txt
    file:close(F),
