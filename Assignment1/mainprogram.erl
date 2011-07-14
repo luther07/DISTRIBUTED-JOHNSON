@@ -13,7 +13,7 @@
 
 %This is the main function which times all the calls to the methods in module hashmod.
 program() ->
-   [A,B,C] = nobif:get_args(),	
+   [N,D,K] = nobif:get_args(),	
    TabId = ets:new(myTable, [set]),
    PercentNum = N*D/100,
    InputTime = timer:tc(hashmod,hashin,[TabId, N, K]),
