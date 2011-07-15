@@ -28,11 +28,11 @@ powers(Base, Exp) when Base>0 ->
 -spec(get_args() -> {string(), string(), string()}).
 get_args() ->
    [A,B,C] = init:get_plain_arguments(),
-   Arg1 = string:to_integer(A),
-   Arg2 = string:to_integer(B),
-   Arg3 = string:to_integer(C),
-   NTemp = element(1, Arg1),
-   N = powers(26, NTemp),
-   D = element(1, Arg2),
-   K = element(1, Arg3),
-   [N, D, K].
+      Arg1 = string:to_integer(A),
+      Arg2 = string:to_integer(B),
+      Arg3 = string:to_integer(C),
+      NTemp = element(1, Arg1),
+      N = powers(26, NTemp),
+      D = element(1, Arg2),
+      K = element(1, Arg3),
+      [N, D, K].
