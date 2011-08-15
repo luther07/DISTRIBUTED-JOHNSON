@@ -1,9 +1,9 @@
 %%%-----------------------------------------------------------------
 %%% File	: nobif_tests.erl
 %%% Author	: Mark Johnson <mjohnson4@luc.edu>
-%%% Purpose	: Tests modules in module "mainprogram"
+%%% Purpose	: Tests function powers/2 in module nobif
 %%% Created	: 17 May 2011 by Mark Johnson <mjohnson4@luc.edu>
-%%% Modified	: 19 June 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Modified	: 14 July 2011 by Mark Johnson <mjohnson4@luc.edu>
 %%%-----------------------------------------------------------------
 
 -module(nobif_tests).

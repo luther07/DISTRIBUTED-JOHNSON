@@ -3,7 +3,7 @@
 %%% Author  : Mark Johnson <mjohnson4@luc.edu>
 %%% Purpose : Runs the functions in module "hashmod" and times the operations
 %%% Created : 08 Feb 2011 by Mark Johnson <mjohnson4@luc.edu>
-%%% Modified: 18 June 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Modified: 14 July 2011 by Mark Johnson <mjohnson4@luc.edu>
 %%%----------------------------------------------------------------------
 
 -module(mainprogram).
@@ -13,15 +13,7 @@
 
 %This is the main function which times all the calls to the methods in module hashmod.
 program() ->
-   [A,B,C] = init:get_plain_arguments(),
-   Arg1 = string:to_integer(A),
-   Arg2 = string:to_integer(B),
-   Arg3 = string:to_integer(C),
-   NTemp = element(1, Arg1),
-   N = powers(26, NTemp),
-   D = element(1, Arg2),
-   K = element(1, Arg3),
-	
+   [N,D,K] = nobif:get_args(),	
    TabId = ets:new(myTable, [set]),
    PercentNum = N*D/100,
    InputTime = timer:tc(hashmod,hashin,[TabId, N, K]),
@@ -30,29 +22,40 @@ program() ->
    NewLine = "\n",
    Comma = ",",
    Number = integer_to_list(N),
+
+%Open file Results.txt
+   {ok, F}=file:open("Results.txt", [append]),
+
+%Writing to file, the cardinality of the sample space N, followed by comma, followed by the time in milliseconds
+%to input the sample points into the key/value store, followed by comma.
    case InputTime of
       {Time1,_} ->
-         Output1 = integer_to_list(Time1),
-         {ok, F}=file:open("Results.txt", [append]),
-         file:write(F, Number),
-         file:write(F, Comma),
-         file:write(F,Output1),
-         file:write(F,Comma)
+         Output1 = integer_to_list(Time1)
    end,
-   
+
+%Writing to file, the time in milliseconds to delete the sample points from the key/value store, followed by comma.
    case OutputTime of
       {Time2,_} ->
-         Output2 = integer_to_list(Time2),
-         file:write(F,Output2),
-         file:write(F,Comma)
+         Output2 = integer_to_list(Time2)
    end,
-	
+
+%Writing to file, the time in milliseconds to re-input the sample points into the key/value store. 
    case ReInputTime of
       {Time3,_} ->
-         Output3 = integer_to_list(Time3),
-         file:write(F,Output3),
-         file:write(F,NewLine),
-         file:close(F)
+         Output3 = integer_to_list(Time3)
    end,
+
+%Write block. Writing our data to the file.
+file:write(F,Number),
+file:write(F,Comma),
+file:write(F,Output1),
+file:write(F,Comma),
+file:write(F,Output2),
+file:write(F,Comma),
+file:write(F,Output3),
+file:write(F,NewLine),
+
+%Close file Results.txt
+   file:close(F),
 
    init:stop().
