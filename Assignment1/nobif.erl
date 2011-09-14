@@ -22,7 +22,6 @@ powers(Base, Exp) when Base>0 ->
    end.
 
 %This function gets the plain arguments passed to the erlang init process from the shell script.
-%We are no longer executing this function. We have incorporated this into function "program".
 -spec(get_args() -> {string(), string(), string()}).
 get_args() ->
    [A,B,C] = init:get_plain_arguments(),
