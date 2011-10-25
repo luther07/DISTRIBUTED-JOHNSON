@@ -3,6 +3,7 @@
 %%% Author  : Mark Johnson <mjohnson4@luc.edu>
 %%% Purpose : Runs the functions in module "hashmod" and times the operations
 %%% Created : 18 Jun 2011 by Mark Johnson <mjohnson4@luc.edu>
+%%% Modified: 25 Oct 2011 by Mark Johnson <mjohnson4@luc.edu>
 %%%----------------------------------------------------------------------
 
 -module(nobif).
@@ -29,8 +30,8 @@ get_args() ->
       Arg1 = string:to_integer(A),
       Arg2 = string:to_integer(B),
       Arg3 = string:to_integer(C),
-      NTemp = element(1, Arg1),
+      {NTemp, _} = Arg1,
       N = powers(26, NTemp),
-      D = element(1, Arg2),
-      K = element(1, Arg3),
+      {D, _} = Arg2,
+      {K, _} = Arg3,
       [N, D, K].
