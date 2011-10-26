@@ -2,38 +2,38 @@ Mark Johnson<mjohnson4@luc.edu>
 README file-Assignment1-Erlang
 
 Credit for randomstring.erl goes to:
-	https://github.com/benahlan/randomstring.git
+   https://github.com/benahlan/randomstring.git
 
 Started building some tests the week of 5/16/11.
 Fixed blatant error in powers/2 function found during testing.
 
 I. Process
-	A. Bash script "RunHashSets.sh":
-		1.Process starts when you execute the bash script, "RunHashSets.sh".
-		2.The bash script compiles all of the necessary modules.
-		3.Next the bash script executes the "prep" module's function "prep_file" followed by the "init" 
-		 module's "stop" function.
-		4. Then the bash script executes the "tests" module's function "test_series" followed by the "init" 
-		Module's "stop function.
-		5. Then the bash script uses a loop to repeatedly run the "mainprogram" module's function "get_args", 
-		passing parameters N, D, and K.
+   A. Bash script "RunHashSets.sh":
+      1.Process starts when you execute the bash script, "RunHashSets.sh".
+      2.The bash script compiles all of the necessary modules.
+      3.Next the bash script executes the "prep" module's function "prep_file" followed by the "init" 
+       module's "stop" function.
+      4. Then the bash script executes the "tests" module's function "test_series" followed by the "init" 
+      Module's "stop function.
+      5. Then the bash script uses a loop to repeatedly run the "mainprogram" module's function "get_args", 
+      passing parameters N, D, and K.
 
-	B. Each execution of the "mainprogram" module's function "program" does the following:
-		1. Each execution will first get the arguments passed from the bash script.
-		2. Then the function converts the string arguments to integers.
-		3. Then the function assigns the converted integer arguments to variables N, D, and K.
-		4. The function assigns to variable "TabId" a new ets (erlang term storage) table of type set.
-		5. We assign the value of N*D/100 to the variable PercentNum.
-		6. We measure the amount of time it takes to execute function "hashin" in module "hashmod", passing 
-		parameters TabId, N, and K, and assign this value to the variable "InputTime".
-		7. We measure the amount of time it takes to execute function "hashout" in module "hashmod", passing 
-		parameters TabId, PercentNum, and K.
-		8. We measure the amount of time it takes to execute function "rehash" in module "hashmod", passing 
-		parameters TabId, PercentNum, and K.
-		9. We extract the time measured for executing "hashin" and append to file N, the time measure, and a 
-		comma.
-		10. We extract the time measured for executing "hashout" and append to file the time measure, and a 
-		comma.
-		8. We extract the time measured for executing "rehash" and append to file the time measure and a newline character.
-		9. We execute the init module's stop function.		
-		10.We go back to the start of the loop. 
+   B. Each execution of the "mainprogram" module's function "program" does the following:
+      1. Each execution will first get the arguments passed from the bash script.
+      2. Then the function converts the string arguments to integers.
+      3. Then the function assigns the converted integer arguments to variables N, D, and K.
+      4. The function assigns to variable "TabId" a new ets (erlang term storage) table of type set.
+      5. We assign the value of N*D/100 to the variable PercentNum.
+      6. We measure the amount of time it takes to execute function "hashin" in module "hashmod", passing 
+      parameters TabId, N, and K, and assign this value to the variable "InputTime".
+      7. We measure the amount of time it takes to execute function "hashout" in module "hashmod", passing 
+      parameters TabId, PercentNum, and K.
+      8. We measure the amount of time it takes to execute function "rehash" in module "hashmod", passing 
+      parameters TabId, PercentNum, and K.
+      9. We extract the time measured for executing "hashin" and append to file N, the time measure, and a 
+      comma.
+      10. We extract the time measured for executing "hashout" and append to file the time measure, and a 
+      comma.
+      11. We extract the time measured for executing "rehash" and append to file the time measure and a newline character.
+      12. We execute the init module's stop function.		
+      13.We go back to the start of the loop. 
